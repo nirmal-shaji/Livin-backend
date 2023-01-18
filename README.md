@@ -1,0 +1,1 @@
+This is the backend part of livin social media project and this contains socket along with the backend(Typescript)
