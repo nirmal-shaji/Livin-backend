@@ -20,9 +20,7 @@ const app = (0, express_1.default)();
 const server = http_1.default.createServer(app);
 const io = new socket_io_1.Server(server, {
     cors: {
-        origin: 'https://livins.audiograms.xyz',
-        //origin:"http://localhost:3000",
-        methods: ["GET", "POST"]
+        origin: 'https://livins.audiograms.xyz'
     }
 });
 app.use((0, cors_1.default)());
