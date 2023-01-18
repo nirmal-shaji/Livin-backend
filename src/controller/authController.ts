@@ -63,7 +63,10 @@ export = {
              );
             }
             res.status(200).json({ message: "user verified", userData,token })
-        } 
+            } 
+        else {
+            res.status(403).json({ message: "user doesnt exist" });
+            }
         } catch (error) {
             console.log(error)
              res.status(500).send(error)

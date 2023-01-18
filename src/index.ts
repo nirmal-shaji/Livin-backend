@@ -19,8 +19,8 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
-       // origin: 'https://www.chat.bristlesweb.club',
-        origin:"http://localhost:3000",
+       origin: 'https://livin.audiograms.xyz',
+        //origin:"http://localhost:3000",
       
     }
 });
