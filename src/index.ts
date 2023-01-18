@@ -21,6 +21,9 @@ const io = new Server(server,{
     cors:{
        origin: 'https://livins.audiograms.xyz',
         //origin:"http://localhost:3000",
+        methods:["GET","POST"],
+        secure: false,
+        changeOrigin: true
       
     }
 });

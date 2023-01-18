@@ -22,6 +22,9 @@ const io = new socket_io_1.Server(server, {
     cors: {
         origin: 'https://livins.audiograms.xyz',
         //origin:"http://localhost:3000",
+        methods: ["GET", "POST"],
+        secure: false,
+        changeOrigin: true
     }
 });
 app.use((0, cors_1.default)());
