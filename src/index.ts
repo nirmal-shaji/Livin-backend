@@ -17,6 +17,8 @@ import cors from 'cors';
 
 const app = express();
 const server = http.createServer(app);
+app.options('*', cors())
+
 const io = new Server(server,{
     cors:{
         origin: 'https://livins.audiograms.xyz'
