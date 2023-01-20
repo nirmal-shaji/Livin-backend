@@ -21,7 +21,7 @@ app.options('*', cors())
 
 const io = new Server(server,{
     cors:{
-        origins: ['https://livins.audiograms.xyz','https://livins.audiograms.xyz/']
+        origins: ['https://livins.audiograms.xyz']
       
    
        
