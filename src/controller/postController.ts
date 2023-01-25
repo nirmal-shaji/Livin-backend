@@ -151,7 +151,7 @@ export = {
   },
   allSavedPost: async (req: Request, res: Response) => {
     try {
-      const data = await savedPostModel.findOne({ userId: req.params.id });
+      const data = await savedPostModel.findOne({ userId: req.params.id }).populate('postId');
       res.status(200).json(data);
     } catch (error) {
       console.log(error);

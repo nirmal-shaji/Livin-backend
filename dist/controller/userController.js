@@ -142,7 +142,6 @@ module.exports = {
     searchUser: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const data = yield userModel_1.default.find({ userName: new RegExp(req.params.id, 'i') });
-            console.log(data);
             res.status(200).json(data.slice(0, 10));
         }
         catch (error) {

@@ -127,7 +127,7 @@ module.exports = {
     }),
     allSavedPost: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const data = yield savedPostModel_1.default.findOne({ userId: req.params.id });
+            const data = yield savedPostModel_1.default.findOne({ userId: req.params.id }).populate('postId');
             res.status(200).json(data);
         }
         catch (error) {
