@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 const postModel_1 = __importDefault(require("../model/postModel"));
 const userModel_1 = __importDefault(require("../model/userModel"));
+const savedPostModel_1 = __importDefault(require("../model/savedPostModel"));
 module.exports = {
     updateUser: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
@@ -130,6 +131,7 @@ module.exports = {
     deletePost: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             yield postModel_1.default.findByIdAndDelete(req.params.id);
+            yield savedPostModel_1.default.findOneAndUpdate({ postId: req.params.id }, { $pull: { postId: req.params.id } });
             res.status(200).json("success");
         }
         catch (error) {
@@ -138,7 +140,6 @@ module.exports = {
         }
     }),
     searchUser: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log("reached herer");
         try {
             const data = yield userModel_1.default.find({ userName: new RegExp(req.params.id, 'i') });
             console.log(data);

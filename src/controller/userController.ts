@@ -2,6 +2,7 @@
 import { RequestHandler, Request, Response } from 'express';
 import postModel from '../model/postModel';
 import userModel from '../model/userModel';
+import savedPostModel from '../model/savedPostModel';
 
 
 export = {
@@ -142,6 +143,7 @@ export = {
     try {
 
       await postModel.findByIdAndDelete(req.params.id);
+      await savedPostModel.findOneAndUpdate({ postId: req.params.id }, { $pull: { postId: req.params.id } });
       res.status(200).json("success");
     } catch (error) {
       console.log(error);
@@ -150,7 +152,7 @@ export = {
 
   },
   searchUser: async (req: Request, res: Response) => {
-    console.log("reached herer")
+   
     try {
       const data = await userModel.find({ userName: new RegExp(req.params.id, 'i') })
       console.log(data)
