@@ -148,5 +148,16 @@ export = {
       res.status(500).send(error)
     }
 
+  },
+  searchUser: async (req: Request, res: Response) => {
+    console.log("reached herer")
+    try {
+      const data = await userModel.find({ userName: new RegExp(req.params.id, 'i') })
+      console.log(data)
+      res.status(200).json(data.slice(0, 10))
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error)
+    }
   }
 }

@@ -14,4 +14,5 @@ router.patch('/unfollow/:id', authMiddleware_1.default, userController_1.default
 router.post('/comment/:id', authMiddleware_1.default, userController_1.default.addComment);
 router.get('/following/:id', authMiddleware_1.default, userController_1.default.getFollowing);
 router.get('/deletePost/:id', authMiddleware_1.default, userController_1.default.deletePost);
+router.get('/search/user/:id', authMiddleware_1.default, userController_1.default.searchUser);
 module.exports = router;

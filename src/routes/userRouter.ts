@@ -13,7 +13,8 @@ router.patch('/follow/:id',authMiddleWare, userController.follow);
 router.patch('/unfollow/:id',authMiddleWare, userController.unFollow);
 router.post('/comment/:id',authMiddleWare, userController.addComment);
 router.get('/following/:id',authMiddleWare, userController.getFollowing);
-router.get('/deletePost/:id',authMiddleWare, userController.deletePost);
+router.get('/deletePost/:id', authMiddleWare, userController.deletePost);
+router.get('/search/user/:id',authMiddleWare,userController.searchUser)
 
 
 
