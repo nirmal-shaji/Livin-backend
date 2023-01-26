@@ -12,6 +12,7 @@ router.patch('/block/:id', authMiddleWare, adminController.unBlockUser);
 router.get('/dashboard', authMiddleWare, adminController.dashboard);
 router.get('/notification', authMiddleWare, adminController.notification)
 router.get('/notification/delete', authMiddleWare, adminController.deleteNotification);
+router.get('/deletePost/:id', authMiddleWare, adminController.deletePost);
 
 
 

@@ -3,6 +3,7 @@ import postModel from "../model/postModel";
 import userModel from "../model/userModel"
 import mongoose from "mongoose";
 import notificationModel from '../model/notificationModel';
+import savedPostModel from '../model/savedPostModel';
 
 // creating a post
 
@@ -131,6 +132,18 @@ export = {
             res.status(500).send(error)
         }
 
-    }
+    },
+    deletePost: async (req: Request, res: Response) => {
+        try {
+    
+          await postModel.findByIdAndDelete(req.params.id);
+          await savedPostModel.findOneAndUpdate({ postId: req.params.id }, { $pull: { postId: req.params.id } });
+          res.status(200).json("success");
+        } catch (error) {
+          console.log(error);
+          res.status(500).send(error)
+        }
+    
+      }
 
 }
