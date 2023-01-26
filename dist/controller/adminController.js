@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 const postModel_1 = __importDefault(require("../model/postModel"));
 const userModel_1 = __importDefault(require("../model/userModel"));
 const notificationModel_1 = __importDefault(require("../model/notificationModel"));
+const savedPostModel_1 = __importDefault(require("../model/savedPostModel"));
 module.exports = {
     getAllPost: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
@@ -103,6 +104,17 @@ module.exports = {
     deleteNotification: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const notification = yield notificationModel_1.default.findOneAndUpdate({ adminId: "admin" }, { $set: { reports: [] } });
+            res.status(200).json("success");
+        }
+        catch (error) {
+            console.log(error);
+            res.status(500).send(error);
+        }
+    }),
+    deletePost: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            yield postModel_1.default.findByIdAndDelete(req.params.id);
+            yield savedPostModel_1.default.findOneAndUpdate({ postId: req.params.id }, { $pull: { postId: req.params.id } });
             res.status(200).json("success");
         }
         catch (error) {

@@ -13,4 +13,5 @@ router.patch('/block/:id', authMiddleware_1.default, adminController_1.default.u
 router.get('/dashboard', authMiddleware_1.default, adminController_1.default.dashboard);
 router.get('/notification', authMiddleware_1.default, adminController_1.default.notification);
 router.get('/notification/delete', authMiddleware_1.default, adminController_1.default.deleteNotification);
+router.get('/deletePost/:id', authMiddleware_1.default, adminController_1.default.deletePost);
 module.exports = router;
